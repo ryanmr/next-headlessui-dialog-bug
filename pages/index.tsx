@@ -1,10 +1,13 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ModalPrompt } from "../components/ModalPrompt";
 import Link from "next/link";
+import { useIsMounted } from "../components/useIsMounted";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+  const isMounted = useIsMounted();
+
   return (
     <div className="h-screen flex items-center justify-center">
       <Head>
@@ -45,11 +48,9 @@ export default function Home() {
           >
             Open the dialog
           </button>
-          <ModalPrompt
-            key="homepage"
-            open={open}
-            onClose={() => setOpen(false)}
-          />
+          {isMounted() && (
+            <ModalPrompt open={open} onClose={() => setOpen(false)} />
+          )}
         </div>
       </div>
     </div>
