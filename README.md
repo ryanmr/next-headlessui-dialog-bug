@@ -22,3 +22,7 @@ Reproduction steps:
 4. it should error out
 
 Observation: the `headlessui-portal-root` is gone after the page changes
+
+## Related
+
+https://github.com/tailwindlabs/headlessui/issues/505
