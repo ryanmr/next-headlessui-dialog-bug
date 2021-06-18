@@ -10,6 +10,12 @@ npm run dev
 yarn dev
 ```
 
+## Workaround
+
+As a workaround to this issue, it seems that conditionally rendering the `<Dialog>` helps.
+
+This branch wraps the `<ModalPrompt />`, which is parent to the `<Dialog>`, like so `{isMounted() && <ModalPrompt />}`. This seems to reset the behavior of removing the DOM `headlessui-portal-root` and then forgetting that it just did that. Instead this will remap the DOM root whenever it is mounted.
+
 ## What is this for?
 
 When using `@headlessui/react` v1.2.0, when using the `Dialog` component, there is a bug that breaks subsequent dialogs after having opened one, then navigating with a `<Link>` and then opening another.
